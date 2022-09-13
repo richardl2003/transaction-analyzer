@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from data_collect import CleanData
+from data_collectors.data_collect_from_csv import CleanData
 import matplotlib.pyplot as plt
 import july
 from july.utils import date_range
@@ -20,6 +20,10 @@ hide_table_row_index = """
         """
 
 def main():
+    plot_with_csv()
+
+def plot_with_csv():
+    '''Takes in downloaded CSV as input'''
     st.title("Transaction Data Analyzer")
 
     # Initialize object
@@ -74,7 +78,7 @@ def main():
                 title="Spending Calendar",
                 titlesize='large',
                 dpi=100)
-    st.pyplot(plt)   
+    st.pyplot(plt) 
 
 if __name__ == "__main__":
     main()
