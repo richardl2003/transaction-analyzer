@@ -1,2 +1,5 @@
 .DS_Store
 csv_data
+__pycache__
+chromedriver
+authentication.py
