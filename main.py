@@ -21,7 +21,7 @@ hide_table_row_index = """
         """
 
 def main():
-    plot_with_csv()
+    plot_with_mintapi()
 
 def plot_with_csv():
     '''Takes in downloaded CSV as in=`put'''

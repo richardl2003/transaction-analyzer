@@ -10,7 +10,7 @@ def obtain_df():
         password,
         mfa_method="soft-token",
         mfa_token=token,
-        headless=False,
+        headless=True,
         session_path=None,
         driver=None
     )
@@ -22,18 +22,6 @@ def obtain_df():
     
     transactions_df = pd.DataFrame(transactions)
     return transactions_df
-
-def spenditure(df):
-    '''Calculates Net Income'''
-    net_income = df["amount"].sum()
-    total_spent = df[df["amount"] < 0]["amount"].sum()
-    total_made = df[df["amount"] > 0]["amount"].sum()
-
-    return {"Net Income": net_income, "Total Spent": total_spent, "Total Made": total_made}
-
-def category(df):
-    category_df = df.groupby(["category"])["amount"].sum().reset_index()
-
 
 
 
