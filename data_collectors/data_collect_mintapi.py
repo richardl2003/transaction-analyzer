@@ -1,9 +1,6 @@
 import mintapi
 import pandas as pd
-from authentication import username, password, token
-
-def main():
-    data = obtain_df()
+from data_collectors.authentication import username, password, token
 
 def obtain_df():
     transactions = []
@@ -25,8 +22,20 @@ def obtain_df():
     
     transactions_df = pd.DataFrame(transactions)
     return transactions_df
+
+def spenditure(df):
+    '''Calculates Net Income'''
+    net_income = df["amount"].sum()
+    total_spent = df[df["amount"] < 0]["amount"].sum()
+    total_made = df[df["amount"] > 0]["amount"].sum()
+
+    return {"Net Income": net_income, "Total Spent": total_spent, "Total Made": total_made}
+
+def category(df):
+    category_df = df.groupby(["category"])["amount"].sum().reset_index()
+
+
+
+
+
     
-
-
-if __name__ == "__main__":
-    main()
